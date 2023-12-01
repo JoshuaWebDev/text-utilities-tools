@@ -1,4 +1,4 @@
-# Text Utility Tools
+# Text Utilities Tools
 
 Conjunto de ferramentas utilitárias para tratamento de arquivos de texto.
 
