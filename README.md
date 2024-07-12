@@ -7,7 +7,7 @@ Conjunto de ferramentas utilitárias para tratamento de arquivos de texto.
 Para ocultas CPFs existentes em um planilha, exporte os dados para um arquivo de texto no formato CSV e insira o arquivo de texto no diretório ```input```. Em seguida execute o comando:
 
 ```
-php treatsdata input/<filename.csv> <fieldname>
+php treatsdata.php input/<filename.csv> <fieldname>
 ```
 
 Onde:
@@ -21,7 +21,7 @@ Dado o arquivo ```characters.csv``` com os seguintes dados abaixo:
 
 ```
 |ID|        NOME        |     CPF      |
-|-:|:-------------------|--------------|
+|--|--------------------|--------------|
 | 1|Jon Snow            |614.067.195-41|
 | 2|Arya Stark          |751.201.387-73|
 | 3|Daenerys Targaryen  |447.727.006-88|
@@ -47,14 +47,14 @@ Dado o arquivo ```characters.csv``` com os seguintes dados abaixo:
 Para ocultar os CPFs adicione o arquivo no diretório ```input``` e execute o comando a seguir:
 
 ```
-php treatsdata input/characters.csv CPF
+php treatsdata.php input/characters.csv CPF
 ```
 
 Após executar o comando acima será criado um arquivo no diretório ```output``` com o seguinte conteúdo:
 
 ```
 |ID|        NOME        |    CPF    |
-|-:|:-------------------|-----------|
+|--|--------------------|-----------|
 | 1|Jon Snow            |614******41|
 | 2|Arya Stark          |751******73|
 | 3|Daenerys Targaryen  |447******88|

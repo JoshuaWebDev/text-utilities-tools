@@ -151,8 +151,8 @@ final class TreatsSensibleDataTest extends TestCase
         $value1 = $result[0]["CPF_CNPJ"];
         $value2 = $result[1]["CPF_CNPJ"];
 
-        // $this->assertEquals(1, preg_match('/\d{3}\*{6}\d{2}/', $value1));
-        $this->assertEquals('blablablablabla', $value1);
-        $this->assertEquals('blablablablabla', $value2);
+        $this->assertEquals(1, preg_match('/\d{3}\*{6}\d{2}/', $value1));
+        // $this->assertEquals('blablablablabla', $value1);
+        // $this->assertEquals('blablablablabla', $value2);
     }
 }
