@@ -20,7 +20,8 @@
         "joshuawebdev/csv2json": "@dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "joshuawebdev/auto-changelog": "^1.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit --colors --testdox tests"
