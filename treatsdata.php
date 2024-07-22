@@ -18,58 +18,64 @@ if ($argc < 3 || $argc > 3) {
  * salva o nome do arquivo e define o nome e local de saída
  */
 $filename = $argv[1];
-$newfile  = substr(basename($filename), 0, -4);
-$destiny  = $csv2array->getOutPutPath() . $newfile . ' (TREATED).csv';
 
-/**
- * salva o nome do campo onde encontram-se os CPFs/CNPJ
- */
-$cpfCnpjField = $argv[2];
+if (file_exists($filename)) {
+    $newfile  = substr(basename($filename), 0, -4);
+    $destiny  = $csv2array->getOutPutPath() . $newfile . ' (TREATED).csv';
 
-/**
- * define o separador (; ou ,) e as aspas (duplas ou simples)
- */
-$csv2array->setSeparator(';');
-$csv2array->setQuotes('"');
+    /**
+     * salva o nome do campo onde encontram-se os CPFs/CNPJ
+     */
+    $cpfCnpjField = $argv[2];
 
-/**
- * converte o conteúdo do arquivo em um array
- * e salva o cabeçalho no array $keys
- */
-$data = $csv2array->convertToArray($filename);
-$keys = $csv2array->getHeaders();
+    /**
+     * define o separador (; ou ,) e as aspas (duplas ou simples)
+     */
+    $csv2array->setSeparator(';');
+    $csv2array->setQuotes('"');
 
-/**
- * inicia a formatação dos dados em csv
- */
+    /**
+     * converte o conteúdo do arquivo em um array
+     * e salva o cabeçalho no array $keys
+     */
+    $data = $csv2array->convertToArray($filename);
+    $keys = $csv2array->getHeaders();
 
-$contentTreated = "";
+    /**
+     * inicia a formatação dos dados em csv
+     */
 
-foreach ($keys as $key) {
-    $contentTreated .= $key . ";";
-}
+    $contentTreated = "";
 
-$contentTreated = rtrim($contentTreated, ";");
-
-try {
-    $temp = $treatsData->hideCpf($data, $cpfCnpjField);
-
-    foreach ($temp as $t) {
-        $contentTreated .= "\n";
-
-        foreach ($keys as $key => $value) {
-            $contentTreated .= $t[$value] . ";";
-        }
-
-        $contentTreated = rtrim($contentTreated, ";");
+    foreach ($keys as $key) {
+        $contentTreated .= $key . ";";
     }
 
-} catch(\Exception $e) {
-    echo $e->getMessage();
-}
+    $contentTreated = rtrim($contentTreated, ";");
 
-if (file_put_contents($destiny, $contentTreated)) {
-    echo "O arquivo " . basename($filename) . " foi tratado e salvo em " . $destiny;
+    try {
+        $temp = $treatsData->hideCpf($data, $cpfCnpjField);
+    
+        foreach ($temp as $t) {
+            $contentTreated .= "\n";
+    
+            foreach ($keys as $key => $value) {
+                $contentTreated .= $t[$value] . ";";
+            }
+    
+            $contentTreated = rtrim($contentTreated, ";");
+        }
+    
+    } catch(\Exception $e) {
+        echo $e->getMessage();
+    }
+    
+    if (file_put_contents($destiny, $contentTreated)) {
+        echo "O arquivo " . basename($filename) . " foi tratado e salvo em " . $destiny;
+    } else {
+        echo "Ocorreu algum erro durante a conversão";
+    }
+
 } else {
-    echo "Ocorreu algum erro durante a conversão";
+    echo "O arquivo {$filename} não existe";
 }
