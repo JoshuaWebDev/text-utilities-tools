@@ -29,11 +29,11 @@ class Csv2Array
     private function handleFile($filename): array
     {
         if (is_null($filename)) {
-            throw new \Exception("O nome do arquivo está nulo (NULL)");
+            throw new \Exception("\033[31mO nome do arquivo está nulo (NULL)\033[0m");
         }
 
         if (!file_exists($filename)) {
-            throw new \Exception("O arquivo {$filename} não existe ou encontra-se em outra pasta!");
+            throw new \Exception("\033[31mO arquivo {$filename} não existe ou encontra-se em outra pasta!\033[0m");
         }
 
         // retorna um número inteiro; o indicador do arquivo
@@ -174,7 +174,7 @@ class Csv2Array
                 if ($this->validateFields($csv_head, $rows)) {
                     $temp = array_combine($csv_head, $rows);
                 } else {
-                    $temp = "A quantidade de valores difere da quantidade de campos no item de ID " . $i;
+                    $temp = "\033[31mA quantidade de valores difere da quantidade de campos no item de ID \033[0m" . $i;
                 }
 
                 array_push($result, $temp);
