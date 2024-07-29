@@ -10,7 +10,7 @@ $treatsData = new TreatsSensibleData;
 
 // Verifica se o argumento foi informado corretamente
 if ($argc < 3 || $argc > 3) {
-    print("Após invocar o nome do programa digite o nome do arquivo que será convertido e o nome do campo onde encontram-se os CPFs/CNPJ!\n");
+    print("\033[33mApós invocar o nome do programa digite o nome do arquivo que será convertido e o nome do campo onde encontram-se os CPFs/CNPJ!\033[0m\n");
     exit();
 }
 
@@ -71,11 +71,11 @@ if (file_exists($filename)) {
     }
     
     if (file_put_contents($destiny, $contentTreated)) {
-        echo "O arquivo " . basename($filename) . " foi tratado e salvo em " . $destiny;
+        echo "\033[32mO arquivo " . basename($filename) . " foi tratado e salvo em " . $destiny . "\033[0m";
     } else {
-        echo "Ocorreu algum erro durante a conversão";
+        echo "\033[31mOcorreu algum erro durante a conversão\033[0m";
     }
 
 } else {
-    echo "O arquivo {$filename} não existe";
+    echo "\033[31mO arquivo {$filename} não existe\033[0m";
 }
