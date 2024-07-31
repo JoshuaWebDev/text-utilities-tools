@@ -29,14 +29,20 @@ Date:   2024-07-12
     show message when the first parameter (source file) do not exists
 -->
 
+## [0.0.1] - 2024-07-12
+
+### Added
+
 - joshuawebdev/auto-changelog installed
 <!-- 
-commit 7698ace
+commit 7698aceccf0809eba106529ea18840d0d76005d5 (tag: v0.0.1)
 Author: Josué Barros da Silva <josue.barros1986@gmail.com>
-Date:   2024-07-12
+Date:   Fri Jul 12 10:51:38 2024 -0300
 
     joshuawebdev/auto-changelog installed
 -->
+
+### Fixed
 
 - fix title
 <!-- 
@@ -45,13 +51,4 @@ Author: Josué Barros da Silva <josue.barros1986@gmail.com>
 Date:   2023-12-01
 
     fix title
--->
-
-- first commit
-<!-- 
-commit 4f759c9
-Author: Josué Barros da Silva <josue.barros1986@gmail.com>
-Date:   2023-12-01
-
-    first commit
 -->
